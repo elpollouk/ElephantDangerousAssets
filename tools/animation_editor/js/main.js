@@ -3,6 +3,7 @@ Chicken.inject(
 function (UpdateLoop, Draw, AnimatedSprite) {
     "use strict";
 
+    var assetRoot = "../../";
     var draw;
     var spec;
     var spriteImage;
@@ -72,7 +73,7 @@ function (UpdateLoop, Draw, AnimatedSprite) {
             jsonSpec.innerText = JSON.stringify(spec);
         }
 
-        spriteImage.src = spec.image;
+        spriteImage.src = assetRoot + spec.image;
         spriteSheetContainers.appendChild(spriteImage);
     }
 
