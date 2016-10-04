@@ -18,6 +18,16 @@
             <div><span class="label">Frame Height</span><input id="frameHeight" type="number" value="32" /></div>
             <div><span class="label">Draw Width</span><input id="drawWidth" type="number" value="32" /></div>
             <div><span class="label">Draw Height</span><input id="drawHeight" type="number" value="32" /></div>
+            <div><span class="label">Background</span><select id="backgroundColour">
+                <option value="white" selected="true">White</option>
+                <option value="black">Black</option>
+                <option value="grey">Grey</option>
+                <option value="red">Red</option>
+                <option value="green">Green</option>
+                <option value="blue">Blue</option>
+                <option value="rgb(255, 0, 255)">Magenta</option>
+                </select>
+            </div>
             <div>
                 <button onclick="updateSprite()">Update</button>
             </div>
@@ -26,6 +36,10 @@
         </div>
         <div id="spriteContainer">
             <canvas id="animationViewer"></canvas>
+        </div>
+        <div>
+            <h2>JSON</h2>
+            <span id="jsonSpec"></span>
         </div>
     </body>
 </html>
