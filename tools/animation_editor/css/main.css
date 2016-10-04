@@ -1,0 +1,20 @@
+body > div {
+    padding: 5px;
+}
+
+h2 {
+    margin: 0;
+}
+
+.label {
+    display: inline-block;
+    width: 150px
+}
+
+input[type="text"] {
+    width: 300px;
+}
+
+input[type="number"] {
+    width: 40px;
+}

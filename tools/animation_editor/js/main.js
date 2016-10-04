@@ -4,6 +4,7 @@ function (UpdateLoop, Draw, AnimatedSprite) {
     "use strict";
 
     var draw;
+    var spriteImage;
     var animatedSprite;
 
     var updater = new UpdateLoop(function (dt) {
@@ -13,18 +14,30 @@ function (UpdateLoop, Draw, AnimatedSprite) {
         animatedSprite.render(draw);
     });
 
-    function main() {
+    window.updateSprite = function updateSprite() {
+        updater.paused = true;
 
-        draw = new Draw(animationViewer, 32, 32);
-        animatedSprite = new AnimatedSprite(spriteSheet, {
-            numFrames: 4,
-            frameTime: 0.1,
-            frameWidth: 32,
-            frameHeight: 32,
-        });
+        spriteImage && spriteSheetContainers.removeChild(spriteImage);
+        spriteImage = document.createElement("img");
+        spriteImage.onload = function () {
+            draw = new Draw(animationViewer, Number(drawWidth.value), Number(drawHeight.value));
+            animatedSprite = new AnimatedSprite(spriteImage, {
+                numFrames: Number(numFrames.value),
+                frameTime: Number(frameTime.value) / 1000,
+                frameWidth: Number(frameWidth.value),
+                frameHeight: Number(frameHeight.value),
+                renderWidth: Number(drawWidth.value),
+                renderHeight: Number(drawHeight.value),
+            });
 
-        updater.paused = false;
+            updater.paused = false;
+        }
+        
+        spriteImage.src = imageFile.value;
+        spriteSheetContainers.appendChild(spriteImage);
     }
 
-    window.onload = main;
+    window.onload = function main() {
+        updateSprite();
+    }
 });
