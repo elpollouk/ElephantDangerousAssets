@@ -9,26 +9,31 @@
         <script src="js/main.js"></script>
     </head>
     <body>
-        <div id="specContainer">
-            <h2>Spec</h2>
-            <div><span class="label">Image</span><input id="imageFile" type="text" value="../../assets/sprites/cyberphant/nellynator.png" /></div>
-            <div><span class="label">Number of Frames</span><input id="numFrames" type="number" value="4" /></div>
-            <div><span class="label">Frame Time (ms)</span><input id="frameTime" type="number" value="75" /></div>
-            <div><span class="label">Frame Width</span><input id="frameWidth" type="number" value="32" /></div>
-            <div><span class="label">Frame Height</span><input id="frameHeight" type="number" value="32" /></div>
-            <div><span class="label">Draw Width</span><input id="drawWidth" type="number" value="32" /></div>
-            <div><span class="label">Draw Height</span><input id="drawHeight" type="number" value="32" /></div>
-            <div><span class="label">Background</span><select id="backgroundColour">
-                <option value="white" selected="true">White</option>
-                <option value="black">Black</option>
-                <option value="grey">Grey</option>
-                <option value="red">Red</option>
-                <option value="green">Green</option>
-                <option value="blue">Blue</option>
-                <option value="rgb(255, 0, 255)">Magenta</option>
-                </select>
+        <div id="controls">
+            <div id="tabs">
+            </div>
+            <div id="specPanel" class="panel closed">
+                <div><span class="label">Image</span><input id="imageFile" type="text" value="../../assets/sprites/cyberphant/nellynator.png" /></div>
+                <div><span class="label">Number of Frames</span><input id="numFrames" type="number" value="4" /></div>
+                <div><span class="label">Frame Time (ms)</span><input id="frameTime" type="number" value="75" /></div>
+                <div><span class="label">Frame Width</span><input id="frameWidth" type="number" value="32" /></div>
+                <div><span class="label">Frame Height</span><input id="frameHeight" type="number" value="32" /></div>
+                <div><span class="label">Draw Width</span><input id="drawWidth" type="number" value="32" /></div>
+                <div><span class="label">Draw Height</span><input id="drawHeight" type="number" value="32" /></div>
+            </div>
+            <div id="jsonPanel" class="panel closed">
+                <textarea id="jsonSpec"></textarea>
             </div>
             <div>
+                <div><span class="label">Background</span><select id="backgroundColour">
+                    <option value="white" selected="true">White</option>
+                    <option value="black">Black</option>
+                    <option value="grey">Grey</option>
+                    <option value="red">Red</option>
+                    <option value="green">Green</option>
+                    <option value="blue">Blue</option>
+                    <option value="rgb(255, 0, 255)">Magenta</option>
+                </select></div>
                 <button onclick="updateSprite()">Update</button>
             </div>
         </div>
@@ -36,10 +41,6 @@
         </div>
         <div id="spriteContainer">
             <canvas id="animationViewer"></canvas>
-        </div>
-        <div>
-            <h2>JSON</h2>
-            <span id="jsonSpec"></span>
         </div>
     </body>
 </html>

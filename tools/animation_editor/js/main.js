@@ -7,6 +7,8 @@ function (UpdateLoop, Draw, AnimatedSprite) {
     var spec;
     var spriteImage;
     var animatedSprite;
+    var currentTab;
+    var currentPanel;
 
     var updater = new UpdateLoop(function (dt) {
         animatedSprite.update(dt);
@@ -14,6 +16,34 @@ function (UpdateLoop, Draw, AnimatedSprite) {
         draw.rect(0, 0, spec.renderWidth, spec.renderHeight, backgroundColour.value);
         animatedSprite.render(draw);
     });
+
+    function openPanel(id) {
+        if (currentTab) {
+            currentTab.classList.remove("highlighted");
+            currentPanel.classList.remove("open");
+            currentPanel.classList.add("closed");
+        }
+
+        currentTab = document.getElementById(id + "Tab");
+        currentPanel = document.getElementById(id + "Panel");
+
+        currentTab.classList.add("highlighted");
+        currentPanel.classList.add("open");
+        currentPanel.classList.remove("closed");
+    }
+
+    function addTab(id, title) {
+        var a = document.createElement("a");
+        a.href = "#";
+        a.id = id + "Tab";
+        a.innerText = title;
+        a.onclick = function () {
+            openPanel(id);
+            return false;
+        }
+
+        tabs.appendChild(a);
+    }
 
     function buildSpec() {
         return {
@@ -47,6 +77,9 @@ function (UpdateLoop, Draw, AnimatedSprite) {
     }
 
     window.onload = function main() {
+        addTab("spec", "Spec");
+        addTab("json", "JSON");
+        openPanel("spec");
         updateSprite();
     }
 });
