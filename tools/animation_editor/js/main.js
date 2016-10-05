@@ -13,7 +13,6 @@ function (UpdateLoop, Draw, AnimatedSprite) {
 
     var updater = new UpdateLoop(function (dt) {
         animatedSprite.update(dt);
-
         draw.rect(0, 0, spec.renderWidth, spec.renderHeight, backgroundColour.value);
         animatedSprite.render(draw);
     });
@@ -58,10 +57,23 @@ function (UpdateLoop, Draw, AnimatedSprite) {
         };
     }
 
+    function refrshSpecPanel() {
+        imageFile.value = spec.image;
+        numFrames.value = spec.numFrames;
+        frameTime.value = spec.frameTime * 1000;
+        frameWidth.value = spec.frameWidth;
+        frameHeight.value = spec.frameHeight;
+        drawWidth.value = spec.renderWidth;
+        drawHeight.value = spec.renderHeight;
+    }
+
     window.updateSprite = function updateSprite() {
         updater.paused = true;
 
-        spec = buildSpec();
+        if (currentPanel === specPanel)
+            spec = buildSpec();
+        else
+            spec = JSON.parse(jsonSpec.value);
 
         spriteImage && spriteSheetContainers.removeChild(spriteImage);
         spriteImage = document.createElement("img");
@@ -71,6 +83,7 @@ function (UpdateLoop, Draw, AnimatedSprite) {
             updater.paused = false;
 
             jsonSpec.innerText = JSON.stringify(spec);
+            refrshSpecPanel();
         }
 
         spriteImage.src = assetRoot + spec.image;
