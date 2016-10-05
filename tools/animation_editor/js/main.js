@@ -4,8 +4,17 @@ function (UpdateLoop, Draw, AnimatedSprite) {
     "use strict";
 
     var assetRoot = "../../";
+    var spec = {
+        image: "assets/sprites/cyberphant/nellynator.png",
+        numFrames: 4,
+        frameTime: 0.075,
+        frameWidth: 32,
+        frameHeight: 32,
+        renderWidth: 32,
+        renderHeight: 32,
+    };
+
     var draw;
-    var spec;
     var spriteImage;
     var animatedSprite;
     var currentTab;
@@ -57,7 +66,7 @@ function (UpdateLoop, Draw, AnimatedSprite) {
         };
     }
 
-    function refrshSpecPanel() {
+    function refreshSpecPanel() {
         imageFile.value = spec.image;
         numFrames.value = spec.numFrames;
         frameTime.value = spec.frameTime * 1000;
@@ -83,7 +92,7 @@ function (UpdateLoop, Draw, AnimatedSprite) {
             updater.paused = false;
 
             jsonSpec.value = JSON.stringify(spec);
-            refrshSpecPanel();
+            refreshSpecPanel();
         }
 
         spriteImage.src = assetRoot + spec.image;
@@ -94,6 +103,7 @@ function (UpdateLoop, Draw, AnimatedSprite) {
         addTab("spec", "Spec");
         addTab("json", "JSON");
         openPanel("spec");
+        refreshSpecPanel();
         updateSprite();
     }
 });
