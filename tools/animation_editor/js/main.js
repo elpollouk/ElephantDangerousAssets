@@ -82,7 +82,7 @@ function (UpdateLoop, Draw, AnimatedSprite) {
             animatedSprite = new AnimatedSprite(spriteImage, spec);
             updater.paused = false;
 
-            jsonSpec.innerText = JSON.stringify(spec);
+            jsonSpec.value = JSON.stringify(spec);
             refrshSpecPanel();
         }
 
