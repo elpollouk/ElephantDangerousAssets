@@ -45,7 +45,7 @@ body > div {
     height: 160px;
 }
 
-.panel .label {
+#controls .label {
     display: inline-block;
     width: 150px
 }
